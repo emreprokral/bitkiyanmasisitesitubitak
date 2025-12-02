@@ -171,6 +171,41 @@ const plantData = {
             fireResistance: "Yüksek",
             protectionMechanism: "Yüksek su içeriği ve yaprak yapısı",
             audioUrl: "audio/plants/ortanca.mp3"
+
+        },
+        {
+            id: 11,
+            name: "Kekik",
+            scientificName: "Thymus vulgaris",
+            image: "images/plants/kekik.jpg",
+            description: "Kekik (Thymus vulgaris), ballıbabagiller familyasına ait, 10-40 cm boya ulaşabilen, çok yıllık ve aromatik bir yarı çalıdır. Akdeniz bölgesine özgü olup, sıcak, güneşli ortamları ve iyi drene edilmiş, kumlu toprakları tercih eder. Küçük, oval yaprakları ve pembe-mor çiçekleriyle tanınır.\n\nBitkinin yapraklarında yüksek oranda uçucu yağlar (başlıca Thymol ve Carvacrol) bulunur; bu bileşenler ona güçlü aromasını ve antiseptik özelliklerini kazandırır. Uçucu yağlar aynı zamanda bitkinin yangına karşı direncini artıran önemli bir faktördür.\n\nYangına karşı yüksek düzeyde dayanıklılık sergiler. Odunsu gövdesi ve toprak üstü kısmı yangında görece yavaş yanar ve uçucu yağlarının yanıcı etkisi sınırlıdır. Derin kök sistemi sayesinde yüzey yangınlarından sonra hızla yeniden filizlenme yeteneği mevcuttur. Bu güçlü toparlanma gücü, kekikin doğal yaşam döngüsünde önemli bir direnç karakteridir. Bana kalırsa, güçlü kokusu ve dayanıklılığıyla kekik, doğanın zorlu koşullara karşı geliştirdiği mükemmel bir adaptasyon örneğidir.",
+            burnSpeed: "Düşük",
+            fireResistance: "Yüksek",
+            protectionMechanism: "Uçucu yağlar ve aromatik bileşenler",
+            audioUrl: "audio/plants/kekik.mp3"
+        },
+        {
+            id: 12,
+            name: "Şimşir",
+            scientificName: "Buxus sempervirens",
+            image: "images/plants/simshir.jpg",
+            description: "Şimşir (Buxus sempervirens), şimşirgiller familyasına ait, 1-10 m boya ulaşabilen, çok yavaş büyüyen, her dem yeşil bir çalı veya küçük ağaçtır. ılıman iklimlere özgü olup, yarı gölge veya tam güneşli ortamları ve nemli, iyi drene edilmiş toprakları tercih eder. Küçük, oval, parlak yeşil yaprakları ve yoğun dallarıyla tanınır.\n\nBitkinin yoğun yaprak yapısı ve kalın epidermis tabakası, su kaybını azaltarak kuraklığa karşı direnç sağlar. Ancak, odunsu gövdesi ve dalları yangında orta düzeyde hassasiyet gösterir.\n\nYangına karşı orta düzeyde dayanıklılık sergiler. Yoğun yaprak örtüsü ve toprak üstü kısmı yangında orta hızda yanabilir, ancak kalın kabuğu kısmi bir koruma sağlar. Yüzey yangınlarından sonra kök sisteminden yeniden filizlenme yeteneği mevcuttur. Bu özelliği sayesinde yangın sonrası alanlarda bitkisel örtünün kısmen yenilenmesine katkı sağlayabilir. Kanımca, şimşirin dayanıklılığı, yoğunluğuyla orantılıdır ve bahçe düzenlemelerinde tercih edilmesinin bir nedenidir.",
+            burnSpeed: "Orta",
+            fireResistance: "Orta",
+            protectionMechanism: "Yoğun yaprak yapısı ve kalın gövde",
+            audioUrl: "audio/plants/simshir.mp3"
+        },
+        {
+            id: 13,
+            name: "Paraçiçeği",
+            scientificName: "Helianthus annuus",
+            image: "images/plants/paracicegi.jpg",
+            description: "Ayçiçeği (Helianthus annuus), papatyagiller familyasına ait, 1-3 m boya ulaşabilen, yıllık bir bitkidir. Güneşli, sıcak ortamları ve verimli, iyi drene edilmiş toprakları tercih eder. Büyük, sarı çiçek başları ve geniş yapraklarıyla tanınır.\n\nBitkinin gövdesinde ve yapraklarında yüksek su içeriği bulunur; bu özellik kuraklığa karşı bir adaptasyon olsa da, yangına karşı sınırlı koruma sağlar. Ancak, bitkinin yıllık doğası ve hızlı büyüme özelliği, yangın sonrası ekosistemlerde önemli bir rol oynayabilir.\n\nYangına karşı orta düzeyde dayanıklılık sergiler. Su içeriği yüksek olan dokuları yangında orta hızda yanabilir. Yıllık bitki olması nedeniyle kök sistemi yüzeyseldir ve yangın sonrası yeniden filizlenme yeteneği sınırlıdır. Bununla birlikte, tohumları yüksek ısıya karşı dirençli olabilir ve yangın sonrası alanlarda hızlı çimlenme gösterebilir. Bana kalırsa, ayçiçeğinin güzelliği ve büyüme hızı, doğanın yangın sonrası toparlanma sürecinde önemli bir sembol haline gelir.",
+            burnSpeed: "Orta",
+            fireResistance: "Orta",
+            protectionMechanism: "Yüksek su içeriği ve gövde yapısı",
+            audioUrl: "audio/plants/para-cicegi.mp3"
+
         }
     ],
 
@@ -313,148 +348,157 @@ window.utils = utils;
     }
 })();
 
-// BGM: Site-wide background music with persistent toggle
+
+// Tanıtım Videosu: Site genelinde tek buton
 (function() {
-    const STORAGE_KEY_ENABLED = 'bgm_enabled';
-    const STORAGE_KEY_VOLUME = 'bgm_volume';
-    const DEFAULT_VOLUME = 0.15;
-    const SRC = 'audio/plants/lavanta.mp3';
+    const VIDEO_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'; // Burayı kendi tanıtım linkinle değiştir
+    const MODAL_ID = 'intro-video-modal-backdrop';
 
-    let audioEl = null;
-    let isEnabled = localStorage.getItem(STORAGE_KEY_ENABLED) === 'true';
-    let volume = Math.min(1, Math.max(0, parseFloat(localStorage.getItem(STORAGE_KEY_VOLUME) || String(DEFAULT_VOLUME))));
-
-    function ensureAudio() {
-        if (audioEl) return audioEl;
-        audioEl = new Audio(SRC);
-        audioEl.loop = true;
-        audioEl.preload = 'auto';
-        audioEl.volume = volume;
-        audioEl.crossOrigin = 'anonymous';
-        return audioEl;
+    function getEmbedUrl() {
+        try {
+            const url = new URL(VIDEO_URL);
+            // watch?v=... → embed/...
+            if (url.hostname.includes('youtube.com') && url.pathname === '/watch' && url.searchParams.get('v')) {
+                const v = url.searchParams.get('v');
+                return `https://www.youtube.com/embed/${v}?rel=0&autoplay=1`;
+            }
+            // youtu.be/ID → embed/ID
+            if (url.hostname.includes('youtu.be')) {
+                const id = url.pathname.replace('/', '');
+                if (id) {
+                    return `https://www.youtube.com/embed/${id}?rel=0&autoplay=1`;
+                }
+            }
+        } catch(e) {
+            // Fallback aşağıda
+        }
+        // Kullanıcı direkt embed link verirse aynen kullan
+        return VIDEO_URL;
     }
 
-    function persist() {
-        localStorage.setItem(STORAGE_KEY_ENABLED, String(isEnabled));
-        localStorage.setItem(STORAGE_KEY_VOLUME, String(volume));
+    function ensureModal() {
+        let backdrop = document.getElementById(MODAL_ID);
+        if (backdrop) return backdrop;
+
+        backdrop = document.createElement('div');
+        backdrop.id = MODAL_ID;
+        backdrop.className = 'intro-video-backdrop';
+        backdrop.setAttribute('role', 'dialog');
+        backdrop.setAttribute('aria-modal', 'true');
+        backdrop.setAttribute('aria-label', 'Tanıtım videosu');
+        backdrop.style.display = 'none';
+
+        const modal = document.createElement('div');
+        modal.className = 'intro-video-modal';
+
+        const closeBtn = document.createElement('button');
+        closeBtn.type = 'button';
+        closeBtn.className = 'intro-video-close';
+        closeBtn.innerHTML = '&times;';
+        closeBtn.setAttribute('aria-label', 'Videoyu kapat');
+
+        const frameWrap = document.createElement('div');
+        frameWrap.className = 'intro-video-frame-wrap';
+
+        const iframe = document.createElement('iframe');
+        iframe.className = 'intro-video-iframe';
+        iframe.setAttribute('title', 'Flora Yanma Atlası Tanıtım Videosu');
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allowfullscreen', 'true');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+
+        frameWrap.appendChild(iframe);
+        modal.appendChild(closeBtn);
+        modal.appendChild(frameWrap);
+        backdrop.appendChild(modal);
+        document.body.appendChild(backdrop);
+
+        function closeModal() {
+            backdrop.style.opacity = '0';
+            setTimeout(() => {
+                backdrop.style.display = 'none';
+                iframe.src = '';
+            }, 180);
+        }
+
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', (e) => {
+            if (e.target === backdrop) closeModal();
+        });
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && backdrop.style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        // expose close for debugging if needed
+        backdrop._closeIntroVideo = closeModal;
+
+        return backdrop;
     }
 
-    function playSafe() {
-        const a = ensureAudio();
-        a.play().catch(() => {/* need user gesture; handled below */});
+    function openIntroVideo() {
+        const backdrop = ensureModal();
+        const iframe = backdrop.querySelector('.intro-video-iframe');
+        iframe.src = getEmbedUrl();
+        backdrop.style.display = 'flex';
+        // küçük bir timeout ile fade animasyonu düzgün başlasın
+        requestAnimationFrame(() => {
+            backdrop.style.opacity = '1';
+        });
     }
 
-    function stop() {
-        if (!audioEl) return;
-        try { audioEl.pause(); } catch(_){}
-    }
+    function createIntroButton() {
+        if (document.getElementById('intro-video-toggle')) return;
 
-    function setVolume(v) {
-        volume = Math.min(1, Math.max(0, v));
-        if (audioEl) audioEl.volume = volume;
-        persist();
-        const slider = document.getElementById('bgm-volume');
-        if (slider) slider.value = String(Math.round(volume * 100));
-    }
-
-    function updateBtnUI(btn) {
-        btn.setAttribute('aria-pressed', isEnabled ? 'true' : 'false');
-        btn.querySelector('[data-icon]').textContent = isEnabled ? '🔊' : '🔈';
-        btn.querySelector('[data-label]').textContent = isEnabled ? 'BGM Açık' : 'BGM Kapalı';
-    }
-
-    function createUI() {
-        if (document.getElementById('bgm-toggle')) return;
         const wrap = document.createElement('div');
-        wrap.id = 'bgm-toggle';
+        wrap.id = 'intro-video-toggle';
+
         wrap.style.position = 'fixed';
         wrap.style.left = 'max(14px, env(safe-area-inset-left, 0px))';
         wrap.style.bottom = 'max(14px, env(safe-area-inset-bottom, 0px))';
         wrap.style.zIndex = '2147483647';
-        wrap.style.display = 'flex';
-        wrap.style.gap = '8px';
-        wrap.style.alignItems = 'center';
+
 
         const btn = document.createElement('button');
         btn.type = 'button';
-        btn.title = 'Arka plan müziği';
-        btn.setAttribute('aria-label', 'Arka plan müziği');
-        btn.style.padding = '8px 12px';
+        btn.title = 'Tanıtım Videosu';
+        btn.setAttribute('aria-label', 'Tanıtım videosunu aç');
+        btn.style.padding = '10px 16px';
+
         btn.style.borderRadius = '9999px';
         btn.style.cursor = 'pointer';
         btn.style.fontWeight = '700';
         btn.style.fontSize = '14px';
         btn.style.lineHeight = '1';
-        btn.style.border = '1px solid rgba(0,0,0,0.12)';
-        btn.style.background = '#ffffff';
-        btn.style.color = '#111827';
-        btn.style.boxShadow = '0 10px 24px rgba(0,0,0,0.15)';
+
         btn.style.touchAction = 'manipulation';
-        btn.innerHTML = '<span data-icon>🔈</span> <span data-label>BGM Kapalı</span>';
+        btn.style.display = 'inline-flex';
+        btn.style.alignItems = 'center';
+        btn.style.gap = '6px';
+        btn.innerHTML = '<span>▶️</span><span>Tanıtım Videosu</span>';
 
-        btn.addEventListener('click', () => {
-            isEnabled = !isEnabled;
-            if (isEnabled) playSafe(); else stop();
-            persist();
-            updateBtnUI(btn);
-        });
-
-        const vol = document.createElement('input');
-        vol.type = 'range';
-        vol.min = '0';
-        vol.max = '100';
-        vol.value = String(Math.round(volume * 100));
-        vol.id = 'bgm-volume';
-        vol.title = 'Ses';
-        vol.style.width = '120px';
-        vol.style.cursor = 'pointer';
-        vol.style.touchAction = 'manipulation';
-        vol.addEventListener('input', () => setVolume(parseInt(vol.value, 10) / 100));
+        btn.addEventListener('click', openIntroVideo);
 
         // Mobile sizing
         if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
-            btn.style.padding = '12px 14px';
+            btn.style.padding = '12px 18px';
             btn.style.fontSize = '16px';
-            vol.style.width = '140px';
         }
 
         // Dark theme sync
-        const applyThemeStyles = () => {
-            const dark = document.documentElement.classList.contains('dark');
-            if (dark) {
-                btn.style.background = 'rgba(31,41,55,0.9)';
-                btn.style.color = '#e5e7eb';
-                btn.style.border = '1px solid rgba(255,255,255,0.15)';
-                btn.style.boxShadow = '0 10px 24px rgba(0,0,0,0.45)';
-            } else {
-                btn.style.background = '#ffffff';
-                btn.style.color = '#111827';
-                btn.style.border = '1px solid rgba(0,0,0,0.12)';
-                btn.style.boxShadow = '0 10px 24px rgba(0,0,0,0.15)';
-            }
-        };
-        applyThemeStyles();
-        const mo = new MutationObserver(applyThemeStyles);
-        mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        // Tema değişiminde renkler CSS üzerinden yönetiliyor; burada ekstra inline stil vermiyoruz.
 
-        updateBtnUI(btn);
         wrap.appendChild(btn);
-        wrap.appendChild(vol);
         document.body.appendChild(wrap);
     }
 
-    // Start on first user interaction if enabled
-    function attachGestureStart() {
-        const handler = () => {
-            document.removeEventListener('pointerdown', handler);
-            if (isEnabled) playSafe();
-        };
-        document.addEventListener('pointerdown', handler, { passive: true });
-    }
-
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => { createUI(); attachGestureStart(); }, { once: true });
+        document.addEventListener('DOMContentLoaded', createIntroButton, { once: true });
+    } else if (document.body) {
+        createIntroButton();
     } else {
-        createUI(); attachGestureStart();
+        window.addEventListener('load', createIntroButton, { once: true });
+
     }
 })();
