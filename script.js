@@ -352,7 +352,7 @@ window.utils = utils;
 
 // Tanıtım Videosu: Site genelinde tek buton
 (function() {
-    const VIDEO_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'; // Burayı kendi tanıtım linkinle değiştir
+    const VIDEO_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'; // Tanıtım videosu URL'i
     const MODAL_ID = 'intro-video-modal-backdrop';
 
     function getEmbedUrl() {
