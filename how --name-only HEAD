@@ -1,0 +1,213 @@
+[1mdiff --git a/script.js b/script.js[m
+[1mindex 3328a45..52edfb7 100644[m
+[1m--- a/script.js[m
+[1m+++ b/script.js[m
+[36m@@ -2,6 +2,7 @@[m
+ // Shared JavaScript across all pages[m
+ console.log('Flamazing Flora Explorer loaded');[m
+ [m
+[32m+[m
+ // Audio management[m
+ class AudioManager {[m
+     constructor() {[m
+[36m@@ -503,167 +504,3 @@[m [mwindow.utils = utils;[m
+     }[m
+ })();[m
+ [m
+[31m-// 🎥 Ultra Gelişmiş Tanıtım Videosu Sistemi[m
+[31m-(function() {[m
+[31m-    'use strict';[m
+[31m-[m
+[31m-    let introVideoModal = null;[m
+[31m-    let isModalOpen = false;[m
+[31m-[m
+[31m-    // Manyetik cursor efekti[m
+[31m-    function initMagneticEffect() {[m
+[31m-        const introToggle = document.getElementById('intro-video-toggle');[m
+[31m-        if (!introToggle) return;[m
+[31m-[m
+[31m-        let mouseX = 0, mouseY = 0;[m
+[31m-        let toggleX = 0, toggleY = 0;[m
+[31m-[m
+[31m-        document.addEventListener('mousemove', (e) => {[m
+[31m-            mouseX = e.clientX;[m
+[31m-            mouseY = e.clientY;[m
+[31m-        });[m
+[31m-[m
+[31m-        function updateMagneticEffect() {[m
+[31m-            const rect = introToggle.getBoundingClientRect();[m
+[31m-            const centerX = rect.left + rect.width / 2;[m
+[31m-            const centerY = rect.top + rect.height / 2;[m
+[31m-[m
+[31m-            const deltaX = mouseX - centerX;[m
+[31m-            const deltaY = mouseY - centerY;[m
+[31m-            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);[m
+[31m-[m
+[31m-            // 150px yarıçap içinde çekim etkisi[m
+[31m-            if (distance < 150) {[m
+[31m-                const strength = (150 - distance) / 150;[m
+[31m-                const moveX = deltaX * strength * 0.3;[m
+[31m-                const moveY = deltaY * strength * 0.3;[m
+[31m-[m
+[31m-                introToggle.style.transform = `translate(${moveX}px, ${moveY}px)`;[m
+[31m-                introToggle.classList.add('magnetic');[m
+[31m-            } else {[m
+[31m-                introToggle.style.transform = '';[m
+[31m-                introToggle.classList.remove('magnetic');[m
+[31m-            }[m
+[31m-[m
+[31m-            requestAnimationFrame(updateMagneticEffect);[m
+[31m-        }[m
+[31m-[m
+[31m-        updateMagneticEffect();[m
+[31m-    }[m
+[31m-[m
+[31m-    // Modal oluşturma[m
+[31m-    function createVideoModal() {[m
+[31m-        if (introVideoModal) return;[m
+[31m-[m
+[31m-        introVideoModal = document.createElement('div');[m
+[31m-        introVideoModal.className = 'intro-video-backdrop';[m
+[31m-        introVideoModal.innerHTML = `[m
+[31m-            <div class="intro-video-modal">[m
+[31m-                <button class="intro-video-close" onclick="closeIntroVideo()">[m
+[31m-                    <i data-feather="x" style="width: 24px; height: 24px;"></i>[m
+[31m-                </button>[m
+[31m-                <div class="intro-video-frame-wrap">[m
+[31m-                    <iframe[m
+[31m-                        class="intro-video-iframe"[m
+[31m-                        src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&rel=0"[m
+[31m-                        title="Flora Yanma Atlası Tanıtım Videosu"[m
+[31m-                        frameborder="0"[m
+[31m-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"[m
+[31m-                        allowfullscreen[m
+[31m-                    ></iframe>[m
+[31m-                </div>[m
+[31m-            </div>[m
+[31m-        `;[m
+[31m-[m
+[31m-        // Modal dışına tıklandığında kapat[m
+[31m-        introVideoModal.addEventListener('click', (e) => {[m
+[31m-            if (e.target === introVideoModal) {[m
+[31m-                closeIntroVideo();[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        // ESC tuşu ile kapat[m
+[31m-        document.addEventListener('keydown', (e) => {[m
+[31m-            if (e.key === 'Escape' && isModalOpen) {[m
+[31m-                closeIntroVideo();[m
+[31m-            }[m
+[31m-        });[m
+[31m-[m
+[31m-        document.body.appendChild(introVideoModal);[m
+[31m-    }[m
+[31m-[m
+[31m-    // Video modalını aç[m
+[31m-    window.openIntroVideo = function() {[m
+[31m-        if (!introVideoModal) {[m
+[31m-            createVideoModal();[m
+[31m-        }[m
+[31m-[m
+[31m-        introVideoModal.style.display = 'flex';[m
+[31m-        isModalOpen = true;[m
+[31m-[m
+[31m-        // Sayfa scroll'unu engelle[m
+[31m-        document.body.style.overflow = 'hidden';[m
+[31m-[m
+[31m-        // Feather ikonlarını güncelle[m
+[31m-        if (window.feather) {[m
+[31m-            setTimeout(() => feather.replace(), 100);[m
+[31m-        }[m
+[31m-[m
+[31m-        // Animasyon için küçük gecikme[m
+[31m-        setTimeout(() => {[m
+[31m-            introVideoModal.style.opacity = '1';[m
+[31m-        }, 10);[m
+[31m-    };[m
+[31m-[m
+[31m-    // Video modalını kapat[m
+[31m-    window.closeIntroVideo = function() {[m
+[31m-        if (!introVideoModal || !isModalOpen) return;[m
+[31m-[m
+[31m-        isModalOpen = false;[m
+[31m-        introVideoModal.style.opacity = '0';[m
+[31m-[m
+[31m-        // Sayfa scroll'unu geri aç[m
+[31m-        document.body.style.overflow = '';[m
+[31m-[m
+[31m-        setTimeout(() => {[m
+[31m-            introVideoModal.style.display = 'none';[m
+[31m-[m
+[31m-            // Video'yu durdur[m
+[31m-            const iframe = introVideoModal.querySelector('.intro-video-iframe');[m
+[31m-            if (iframe) {[m
+[31m-                iframe.src = iframe.src; // Video'yu yeniden yükle (durdur)[m
+[31m-            }[m
+[31m-        }, 400);[m
+[31m-    };[m
+[31m-[m
+[31m-    // Tanıtım butonunu oluştur (eğer yoksa)[m
+[31m-    function createIntroButton() {[m
+[31m-        if (document.getElementById('intro-video-toggle')) {[m
+[31m-            initMagneticEffect();[m
+[31m-            return;[m
+[31m-        }[m
+[31m-[m
+[31m-        const buttonContainer = document.createElement('div');[m
+[31m-        buttonContainer.id = 'intro-video-toggle';[m
+[31m-[m
+[31m-        const button = document.createElement('button');[m
+[31m-        button.onclick = openIntroVideo;[m
+[31m-        button.innerHTML = '🎥 Tanıtım Videosu İzle';[m
+[31m-        button.title = 'Flora Yanma Atlası tanıtım videosunu izleyin';[m
+[31m-[m
+[31m-        buttonContainer.appendChild(button);[m
+[31m-        document.body.appendChild(buttonContainer);[m
+[31m-[m
+[31m-        initMagneticEffect();[m
+[31m-    }[m
+[31m-[m
+[31m-    // Sayfa yüklendiğinde başlat[m
+[31m-    if (document.readyState === 'loading') {[m
+[31m-        document.addEventListener('DOMContentLoaded', createIntroButton, { once: true });[m
+[31m-    } else if (document.body) {[m
+[31m-        createIntroButton();[m
+[31m-    } else {[m
+[31m-        window.addEventListener('load', createIntroButton, { once: true });[m
+[31m-    }[m
+[31m-[m
+[31m-})();[m
+[1mdiff --git a/style.css b/style.css[m
+[1mindex 148133b..aeeb6a1 100644[m
+[1m--- a/style.css[m
+[1m+++ b/style.css[m
+[36m@@ -251,167 +251,59 @@[m [mbody {[m
+     }[m
+ }[m
+ [m
+[31m-/* 🎥 Tanıtım videosu butonu (ultra gelişmiş) */[m
+[31m-#intro-video-toggle {[m
+[31m-    position: relative;[m
+[31m-    display: inline-block;[m
+[31m-}[m
+[31m-[m
+[31m-/* Video önizleme thumbnail efekti */[m
+[31m-#intro-video-toggle button {[m
+[31m-    position: relative;[m
+[31m-}[m
+[31m-[m
+[31m-#intro-video-toggle button::before {[m
+[31m-    content: '▶';[m
+[31m-    position: absolute;[m
+[31m-    left: 1.5rem;[m
+[31m-    top: 50%;[m
+[31m-    transform: translateY(-50%);[m
+[31m-    font-size: 1.2rem;[m
+[31m-    color: rgba(255, 255, 255, 0.9);[m
+[31m-    text-shadow: 0 0 10px rgba(34, 197, 94, 0.8);[m
+[31m-    z-index: 2;[m
+[31m-    animation: playIconPulse 2s ease-in-out infinite;[m
+[31m-}[m
+[31m-[m
+[32m+[m[32m
