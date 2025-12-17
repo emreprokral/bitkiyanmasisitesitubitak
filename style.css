@@ -139,22 +139,7 @@ body {
     backface-visibility: hidden; /* Smooth rendering */
 }
 
-/* Card shimmer effect */
-.plant-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
-    z-index: 1;
-}
-
-.plant-card:hover::before {
-    left: 100%;
-}
+/* Card shimmer effect removed */
 
 /* Doğal butonlar */
 .natural-button {
